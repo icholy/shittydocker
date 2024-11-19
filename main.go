@@ -11,6 +11,7 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"runtime"
 	"syscall"
 )
 
@@ -66,7 +67,8 @@ func FetchImageTo(library, image, dir string) error {
 		return err
 	}
 	manifest, ok := FindManifest(manifests, Platform{
-		Architecture: "amd64", OS: "linux",
+		Architecture: runtime.GOARCH,
+		OS:           runtime.GOOS,
 	})
 	if !ok {
 		return fmt.Errorf("manifest not found")
