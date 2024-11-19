@@ -38,7 +38,7 @@ func main() {
 		Path: flag.Arg(0),
 		Args: flag.Args()[1:],
 		Dir:  "/",
-		Env:  []string{"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"},
+		Env:  []string{"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"},
 		SysProcAttr: &syscall.SysProcAttr{
 			Chroot:     jail,
 			Cloneflags: syscall.CLONE_NEWPID,
